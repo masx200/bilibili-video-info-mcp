@@ -56,15 +56,6 @@ MCP 客户端配置
 }
 ```
 
-### 使用 MCP Inspector 调试
-
-```bash
-# 使用 npx 安装并运行 MCP Inspector
-npx -y @modelcontextprotocol/inspector uv run mcp_server.py
-```
-
-这将启动 MCP Inspector 界面，您可以在浏览器中测试 MCP 工具。
-
 ## 常见问题
 
 ### 1. 找不到 SESSDATA 怎么办？
