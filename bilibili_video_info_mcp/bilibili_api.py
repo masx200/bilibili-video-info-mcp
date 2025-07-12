@@ -98,18 +98,24 @@ def get_danmaku(cid):
     except (requests.RequestException, ET.ParseError) as e:
         return [], {'error': f'Failed to get or parse danmaku: {e}'}
 
-def get_hot_comments(aid):
-    """Fetches hot comments for a given aid."""
+def get_comments(aid):
+    """Fetches comments for a given aid."""
     headers = _get_headers()
-    hot_comments = []
+    comments_list = []
     try:
-        params_comments = {'type': 1, 'oid': aid, 'sort': 2}  # sort=2 for hot comments
+        params_comments = {'type': 1, 'oid': aid, 'sort': 2}  # sort=2 fetches hot comments
         response_comments = requests.get(API_GET_COMMENTS, params=params_comments, headers=headers)
         response_comments.raise_for_status()
         comments_data = response_comments.json()
-        if comments_data.get('data') and comments_data['data'].get('replies'):
-            for reply in comments_data['data']['replies']:
-                hot_comments.append(reply.get('content', {}).get('message'))
-        return hot_comments, None
+        
+        if comments_data.get('code') == 0 and comments_data.get('data', {}).get('replies'):
+            for comment in comments_data['data']['replies']:
+                if comment.get('content', {}).get('message'):
+                    comments_list.append({
+                        'user': comment.get('member', {}).get('uname', 'Unknown User'),
+                        'content': comment['content']['message'],
+                        'likes': comment.get('like', 0)
+                    })
+        return comments_list, None
     except requests.RequestException as e:
-        return [], {'error': f'Could not fetch comments: {e}'}
+        return [], {'error': f'Failed to get comments: {e}'}

@@ -1,5 +1,6 @@
-[project.scripts]
-start = "mcp_server:main"
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "bilibili-video-info-mcp"
@@ -11,6 +12,12 @@ dependencies = [
     "mcp[cli]>=1.11.0",
     "requests",
 ]
+authors = [
+    {name = "lesir"}
+]
+
+[project.scripts]
+bilibili-video-info-mcp = "bilibili_video_info_mcp.__main__:main"
 
 [tool.setuptools]
-py-modules = ["mcp_server", "bilibili_api"]
+packages = ["bilibili_video_info_mcp"]

@@ -1,5 +1,9 @@
+"""
+Bilibili视频信息MCP服务器的核心模块
+"""
+
 from mcp.server.fastmcp import FastMCP
-import bilibili_api
+from . import bilibili_api
 
 # 创建 FastMCP 服务器实例，命名为 BilibiliVideoInfo
 mcp = FastMCP("BilibiliVideoInfo", dependencies=["requests"])
@@ -94,7 +98,7 @@ async def get_comments(url: str) -> list:
     if error:
         return [f"获取视频信息失败: {error['error']}"]
     
-    comments, error = bilibili_api.get_hot_comments(aid)
+    comments, error = bilibili_api.get_comments(aid)
     if error:
         return [f"获取评论失败: {error['error']}"]
     
@@ -103,6 +107,6 @@ async def get_comments(url: str) -> list:
     
     return comments
 
-# 只有在直接运行此文件时，启动 MCP 服务器
-if __name__ == "__main__":
-    mcp.run(transport='stdio')
+def run_server(transport='stdio'):
+    """运行MCP服务器"""
+    mcp.run(transport=transport)

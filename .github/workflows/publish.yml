@@ -48,6 +48,8 @@ jobs:
     - name: 构建包
       run: python -m build
     - name: 测试构建
+      env:
+        SESSDATA: "mock_sessdata_for_testing"
       run: |
         python -m pip install dist/*.whl
-        python -c "import mcp_server; import bilibili_api"
+        python -c "import bilibili_video_info_mcp; import bilibili_video_info_mcp.bilibili_api; import bilibili_video_info_mcp.server"

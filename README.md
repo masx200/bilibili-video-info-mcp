@@ -15,7 +15,19 @@
 - Python >= 3.10
 - 依赖包：requests、mcp[cli]
 
-## 快速安装
+## 安装方法
+
+### 从 PyPI 安装 (推荐)
+
+```bash
+# 使用pip安装
+pip install bilibili-video-info-mcp
+
+# 或者使用 uv 安装
+uv pip install bilibili-video-info-mcp
+```
+
+### 从源码安装
 
 ```bash
 # 克隆仓库
@@ -42,11 +54,11 @@ export SESSDATA="你的SESSDATA值"
 ### 启动服务器
 
 ```bash
-# 使用安装的入口点启动
-uv run start
+# 使用模块方式启动
+python -m bilibili_video_info_mcp
 
-# 或者直接运行脚本
-python mcp_server.py
+# 或者使用安装的命令行工具
+bilibili-video-info-mcp
 ```
 
 ### 使用 MCP Inspector 调试
