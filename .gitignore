@@ -1,0 +1,41 @@
+# Python build artifacts and caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.env
+env/
+venv/
+.venv/
+
+# Distribution / packaging
+.eggs/
+*.egg-info/
+build/
+dist/
+
+# Log files
+*.log
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+.fseventsd
+
+# VSCode editor configuration
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+
+# Python testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
