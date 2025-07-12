@@ -10,55 +10,23 @@
 - 基于 FastMCP 框架，轻量化设计
 - 通过环境变量配置 SESSDATA
 
-## 安装要求
-
-- Python >= 3.10
-- 依赖包：requests、mcp[cli]
-
-## 安装方法
-
-### 从 PyPI 安装 (推荐)
-
-```bash
-# 使用pip安装
-pip install bilibili-video-info-mcp
-
-# 或者使用 uv 安装
-uv pip install bilibili-video-info-mcp
-```
-
-### 从源码安装
-
-```bash
-# 克隆仓库
-git clone <仓库地址>
-cd bilibili-video-info-mcp
-
-# 安装依赖
-pip install -e .
-# 或者使用 uv
-uv pip install -e .
-```
-
-## 环境变量配置
-
-使用前需要设置 Bilibili 的 SESSDATA 环境变量。SESSDATA 可以从浏览器的 Cookie 中获取。
-
-```bash
-# 设置环境变量
-export SESSDATA="你的SESSDATA值"
-```
-
 ## 使用方法
 
-### 启动服务器
-
-```bash
-# 使用模块方式启动
-python -m bilibili_video_info_mcp
-
-# 或者使用安装的命令行工具
-bilibili-video-info-mcp
+MCP 客户端配置
+```json
+{
+    "mcpServers": {
+        "bilibili-video-info-mcp": {
+            "command": "uvx",
+            "args": [
+                "bilibili-video-info-mcp"
+            ],
+            "env": {
+                "SESSDATA": "your valid sessdata"
+            }
+        }
+    }
+}
 ```
 
 ### 使用 MCP Inspector 调试
