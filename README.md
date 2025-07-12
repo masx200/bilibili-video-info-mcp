@@ -1,44 +1,8 @@
-# Bilibili 视频信息 MCP 服务器
+# MCP Server for Bilibili Video Info
 
 这是一个基于 MCP (Model Context Protocol) 的服务器，可以获取 Bilibili 视频的字幕、弹幕和评论信息。
 
-## 功能特点
-
-- 支持获取 Bilibili 视频字幕列表
-- 支持获取 Bilibili 视频弹幕内容
-- 支持获取 Bilibili 视频热门评论
-- 基于 FastMCP 框架，轻量化设计
-- 通过环境变量配置 SESSDATA
-
-## 使用方法
-
-MCP 客户端配置
-```json
-{
-    "mcpServers": {
-        "bilibili-video-info-mcp": {
-            "command": "uvx",
-            "args": [
-                "bilibili-video-info-mcp"
-            ],
-            "env": {
-                "SESSDATA": "your valid sessdata"
-            }
-        }
-    }
-}
-```
-
-### 使用 MCP Inspector 调试
-
-```bash
-# 使用 npx 安装并运行 MCP Inspector
-npx -y @modelcontextprotocol/inspector uv run mcp_server.py
-```
-
-这将启动 MCP Inspector 界面，您可以在浏览器中测试 MCP 工具。
-
-## API 功能
+## MCP 工具列表
 
 ### 1. 获取视频字幕列表
 
@@ -73,13 +37,33 @@ npx -y @modelcontextprotocol/inspector uv run mcp_server.py
 }
 ```
 
-## 集成到其他应用
+## 使用方法
 
-MCP 服务器可以通过标准输入输出 (stdio) 与其他应用集成，也可以作为独立的 HTTP 服务运行。
+MCP 客户端配置
+```json
+{
+    "mcpServers": {
+        "bilibili-video-info-mcp": {
+            "command": "uvx",
+            "args": [
+                "bilibili-video-info-mcp"
+            ],
+            "env": {
+                "SESSDATA": "your valid sessdata"
+            }
+        }
+    }
+}
+```
 
-### 在 AI 助手中使用
+### 使用 MCP Inspector 调试
 
-适用于 Claude、GPT 等 AI 助手的 MCP 集成，可以让 AI 助手获取 Bilibili 视频的字幕、弹幕和评论数据。
+```bash
+# 使用 npx 安装并运行 MCP Inspector
+npx -y @modelcontextprotocol/inspector uv run mcp_server.py
+```
+
+这将启动 MCP Inspector 界面，您可以在浏览器中测试 MCP 工具。
 
 ## 常见问题
 
