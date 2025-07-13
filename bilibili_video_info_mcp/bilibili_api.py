@@ -32,9 +32,24 @@ def _get_headers():
     return headers
 
 def extract_bvid(url):
+    # 先尝试直接从URL中提取BV号
     match = re.search(r'BV[a-zA-Z0-9_]+', url)
     if match:
         return match.group(0)
+    
+    # 如果是短链接（如b23.tv），则跟踪重定向获取完整URL
+    if 'b23.tv' in url:
+        try:
+            response = requests.head(url, headers=_get_headers(), allow_redirects=True)
+            if response.status_code == 200:
+                # 获取最终重定向后的URL
+                final_url = response.url
+                match = re.search(r'BV[a-zA-Z0-9_]+', final_url)
+                if match:
+                    return match.group(0)
+        except requests.RequestException as e:
+            print(f"Error resolving short URL: {e}")
+    
     return None
 
 def get_video_basic_info(bvid):
