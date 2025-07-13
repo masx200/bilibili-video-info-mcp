@@ -55,10 +55,10 @@ jobs:
           # 保存changelog到文件
           echo "$changelog" > changelog.md
           
-          # 设置输出变量
-          echo "changelog<<EOF" >> $GITHUB_OUTPUT
-          echo "$changelog" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          # 使用环境文件语法设置输出变量
+          echo "changelog<<EOL" >> "$GITHUB_OUTPUT"
+          echo "$changelog" >> "$GITHUB_OUTPUT"
+          echo "EOL" >> "$GITHUB_OUTPUT"
       
       - name: 创建Tag
         run: |
