@@ -1,5 +1,6 @@
 # MCP Server for Bilibili Video Info
 
+[![smithery badge](https://smithery.ai/badge/@lesir831/bilibili-video-info-mcp)](https://smithery.ai/server/@lesir831/bilibili-video-info-mcp)
 [![English](https://img.shields.io/badge/language-English-blue.svg)](./README.md) [![中文](https://img.shields.io/badge/language-中文-red.svg)](./README.zh.md)
 
 A Bilibili MCP Server that can retrieve subtitles, danmaku (bullet comments), and comments information from videos using the video URL.
