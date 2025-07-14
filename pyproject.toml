@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bilibili-video-info-mcp"
-version = "0.1.2"
+version = "0.2.0"
 description = "An MCP server to fetch Bilibili video information like subtitles, comments, and danmaku."
 readme = "README.md"
 requires-python = ">=3.10"
