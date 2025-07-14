@@ -16,13 +16,13 @@ mcp = FastMCP("BilibiliVideoInfo", dependencies=["requests"])
     }
 )
 async def get_subtitles(url: str) -> list:
-    """获取B站视频的字幕内容
+    """Get subtitles from a Bilibili video
     
     Args:
-        url: B站视频链接，例如 https://www.bilibili.com/video/BV1x341177NN
+        url: Bilibili video URL, e.g., https://www.bilibili.com/video/BV1x341177NN
         
     Returns:
-        列表形式的字幕内容，按语言分组
+        List of subtitles grouped by language. Each entry contains subtitle content with timestamps.
     """
     bvid = bilibili_api.extract_bvid(url)
     if not bvid:
@@ -49,13 +49,13 @@ async def get_subtitles(url: str) -> list:
     }
 )
 async def get_danmaku(url: str) -> list:
-    """获取B站视频的弹幕内容
+    """Get danmaku (bullet comments) from a Bilibili video
     
     Args:
-        url: B站视频链接，例如 https://www.bilibili.com/video/BV1x341177NN
+        url: Bilibili video URL, e.g., https://www.bilibili.com/video/BV1x341177NN
         
     Returns:
-        列表形式的弹幕内容
+        List of danmaku (bullet comments) with content, timestamp and user information
     """
     bvid = bilibili_api.extract_bvid(url)
     if not bvid:
@@ -82,13 +82,13 @@ async def get_danmaku(url: str) -> list:
     }
 )
 async def get_comments(url: str) -> list:
-    """获取B站视频的热门评论
+    """Get popular comments from a Bilibili video
     
     Args:
-        url: B站视频链接，例如 https://www.bilibili.com/video/BV1x341177NN
+        url: Bilibili video URL, e.g., https://www.bilibili.com/video/BV1x341177NN
         
     Returns:
-        列表形式的热门评论
+        List of popular comments including comment content, user information, and metadata such as like counts
     """
     bvid = bilibili_api.extract_bvid(url)
     if not bvid:

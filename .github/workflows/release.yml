@@ -43,13 +43,13 @@ jobs:
           # 获取最新的tag
           latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
           
-          # 如果没有找到tag，则收集所有的commit
+          # 如果没有找到tag，则收集所有的commit，排除merge提交
           if [ -z "$latest_tag" ]; then
-            echo "No previous tag found, collecting all commits"
-            changelog=$(git log --pretty=format:"* %s (%h)" --reverse)
+            echo "No previous tag found, collecting all commits (excluding merges)"
+            changelog=$(git log --pretty=format:"* %s (%h)" --reverse --no-merges)
           else
-            echo "Found latest tag: $latest_tag, collecting commits since then"
-            changelog=$(git log ${latest_tag}..HEAD --pretty=format:"* %s (%h)" --reverse)
+            echo "Found latest tag: $latest_tag, collecting commits since then (excluding merges)"
+            changelog=$(git log ${latest_tag}..HEAD --pretty=format:"* %s (%h)" --reverse --no-merges)
           fi
           
           # 保存changelog到文件
