@@ -107,6 +107,9 @@ async def get_comments(url: str) -> list:
     
     return comments
 
-def run_server(transport='stdio'):
-    """运行MCP服务器"""
-    mcp.run(transport=transport)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Bilibili Video Info MCP Server")
+    parser.add_argument('transport', nargs='?', default='stdio', choices=['stdio', 'sse', 'streamable-http'],
+                        help='Transport type (stdio, sse, or streamable-http)')
+    args = parser.parse_args()
+    mcp.run(transport=args.transport)

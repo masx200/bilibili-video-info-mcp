@@ -1,7 +1,15 @@
 """
 Bilibili Video Info MCP Server
-
-这个包提供了一个MCP服务器，用于获取B站视频的信息，如字幕、弹幕和评论。
 """
+import argparse
+from .server import mcp
 
-__version__ = "0.1.0"
+def main():
+    parser = argparse.ArgumentParser(description="Bilibili Video Info MCP Server")
+    parser.add_argument('transport', nargs='?', default='stdio', choices=['stdio', 'sse', 'streamable-http'],
+                        help='Transport type (stdio, sse, or streamable-http)')
+    args = parser.parse_args()
+    mcp.run(transport=args.transport)
+
+if __name__ == "__main__":
+    main()

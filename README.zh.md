@@ -2,11 +2,12 @@
 
 [![English](https://img.shields.io/badge/language-English-blue.svg)](./README.md) [![中文](https://img.shields.io/badge/language-中文-red.svg)](./README.zh.md)
 
-Bilibili Mcp Server，可以获取根据视频 url 获取视频的字幕、弹幕和评论信息。
+Bilibili MCP Server，可以获取根据视频 url 获取视频的字幕、弹幕和评论信息。
 
 ## 使用方法
 
-MCP 客户端配置
+MCP Server 支持三种通信方式：
+1. **stdio**
 ```json
 {
     "mcpServers": {
@@ -17,6 +18,41 @@ MCP 客户端配置
             ],
             "env": {
                 "SESSDATA": "your valid sessdata"
+            }
+        }
+    }
+}
+```
+
+2. **sse**（服务器发送事件）
+在 sse 模式下运行 bilibili-video-info-mcp
+``` bash
+cp .env.example .env
+uvx run --env .env bilibili-video-info-mcp sse
+```
+然后配置你的mcp客户端
+```json
+{
+    "mcpServers": {
+        "bilibili-video-info-mcp": {
+            "url": "http://{your.ip.address}:$PORT$/sse"
+        }
+    }
+}
+```
+
+3. **streamable-http**（HTTP流式传输）
+在 streamable-http 模式下运行 bilibili-video-info-mcp
+``` bash
+cp .env.example .env
+uvx run --env .env bilibili-video-info-mcp streamable-http
+```
+然后配置你的mcp客户端
+```json
+{
+    "mcpServers": {
+        "bilibili-video-info-mcp": {
+            "url": "http://{your.ip.address}:$PORT$/mcp"
             }
         }
     }

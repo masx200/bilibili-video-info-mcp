@@ -6,7 +6,8 @@ A Bilibili MCP Server that can retrieve subtitles, danmaku (bullet comments), an
 
 ## Usage
 
-MCP Client Configuration
+This MCP server supports three transport methods:
+1. **stdio** 
 ```json
 {
     "mcpServers": {
@@ -17,6 +18,41 @@ MCP Client Configuration
             ],
             "env": {
                 "SESSDATA": "your valid sessdata"
+            }
+        }
+    }
+}
+```
+
+2. **sse** (Server-Sent Events)
+run bilibili-video-info-mcp in sse mode
+``` bash
+cp .env.example .env
+uvx run --env .env bilibili-video-info-mcp sse
+```
+then config your mcp client
+```json
+{
+    "mcpServers": {
+        "bilibili-video-info-mcp": {
+            "url": "http://{your.ip.address}:$PORT$/sse"
+        }
+    }
+}
+```
+
+3. **streamable-http** (HTTP Streaming)
+run bilibili-video-info-mcp in streamable-http mode
+``` bash
+cp .env.example .env
+uvx run --env .env bilibili-video-info-mcp streamable-http
+```
+then config your mcp client
+```json
+{
+    "mcpServers": {
+        "bilibili-video-info-mcp": {
+            "url": "http://{your.ip.address}:$PORT$/mcp"
             }
         }
     }
@@ -81,7 +117,3 @@ Standard Bilibili video links are supported, such as:
 - https://www.bilibili.com/video/BV1x341177NN
 - https://b23.tv/xxxxx (short links)
 - Any link containing a BV number
-
-## License
-
-MIT
