@@ -2,11 +2,11 @@
 
 [![English](https://img.shields.io/badge/language-English-blue.svg)](./README.md) [![中文](https://img.shields.io/badge/language-中文-red.svg)](./README.zh.md)
 
-A Bilibili MCP Server that can retrieve subtitles, danmaku (bullet comments), and comments information from videos using the video URL.
+Bilibili Mcp Server，可以获取根据视频 url 获取视频的字幕、弹幕和评论信息。
 
-## Usage
+## 使用方法
 
-MCP Client Configuration
+MCP 客户端配置
 ```json
 {
     "mcpServers": {
@@ -23,9 +23,9 @@ MCP Client Configuration
 }
 ```
 
-## MCP Tools List
+## MCP 工具列表
 
-### 1. Get Video Subtitles
+### 1. 获取视频字幕列表
 
 ```json
 {
@@ -36,7 +36,7 @@ MCP Client Configuration
 }
 ```
 
-### 2. Get Video Danmaku (Bullet Comments)
+### 2. 获取视频弹幕
 
 ```json
 {
@@ -47,7 +47,7 @@ MCP Client Configuration
 }
 ```
 
-### 3. Get Video Comments
+### 3. 获取视频评论
 
 ```json
 {
@@ -58,30 +58,30 @@ MCP Client Configuration
 }
 ```
 
-## FAQ
+## 常见问题
 
-### 1. How to find SESSDATA?
+### 1. 找不到 SESSDATA 怎么办？
 
-1. Log in to the Bilibili website
-2. Open browser developer tools (F12)
-3. Go to Application/Storage -> Cookies
-4. Find the value corresponding to SESSDATA
+1. 登录 Bilibili 网站
+2. 打开浏览器开发者工具 (F12)
+3. 进入 Application/Storage -> Cookies
+4. 找到 SESSDATA 对应的值
 
-### 2. Error "SESSDATA environment variable is required"
+### 2. 报错 "SESSDATA environment variable is required"
 
-Make sure you have set the environment variable:
+确保已经设置了环境变量：
 
 ```bash
-export SESSDATA="your SESSDATA value"
+export SESSDATA="你的SESSDATA值"
 ```
 
-### 3. What video link formats are supported?
+### 3. 视频链接支持哪些格式？
 
-Standard Bilibili video links are supported, such as:
+支持标准的 Bilibili 视频链接，例如：
 - https://www.bilibili.com/video/BV1x341177NN
-- https://b23.tv/xxxxx (short links)
-- Any link containing a BV number
+- https://b23.tv/xxxxx (短链接)
+- 包含 BV 号的任何链接
 
-## License
+## 许可证
 
 MIT
